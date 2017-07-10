@@ -333,8 +333,11 @@ class EntryRepository extends EntityRepository
      */
     public function findByUrlAndUserId($url, $userId)
     {
+        $url = urldecode($url);
+
         $res = $this->createQueryBuilder('e')
-            ->where('e.url = :url')->setParameter('url', urldecode($url))
+            ->where('e.url = :url')->setParameter('url', $url)
+            ->orWhere('e.givenUrl = :url')->setParameter('url', $url)
             ->andWhere('e.user = :user_id')->setParameter('user_id', $userId)
             ->getQuery()
             ->getResult();

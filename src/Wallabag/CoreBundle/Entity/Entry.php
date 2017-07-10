@@ -68,6 +68,15 @@ class Entry
     /**
      * @var string
      *
+     * @ORM\Column(name="given_url", type="text", nullable=true)
+     *
+     * @Groups({"entries_for_user", "export_all"})
+     */
+    private $givenUrl;
+
+    /**
+     * @var string
+     *
      * @Assert\NotBlank()
      * @ORM\Column(name="url", type="text", nullable=true)
      *
@@ -304,6 +313,30 @@ class Entry
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set given url.
+     *
+     * @param string $givenUrl
+     *
+     * @return Entry
+     */
+    public function setGivenUrl($givenUrl)
+    {
+        $this->givenUrl = $givenUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get given Url.
+     *
+     * @return string
+     */
+    public function getGivenUrl()
+    {
+        return $this->givenUrl;
     }
 
     /**

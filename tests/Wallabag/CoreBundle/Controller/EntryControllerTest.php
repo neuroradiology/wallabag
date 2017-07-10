@@ -266,6 +266,41 @@ class EntryControllerTest extends WallabagCoreTestCase
         $this->assertContains('/view/', $client->getResponse()->getTargetUrl());
     }
 
+    public function testPostNewOkUrlExistWithRedirection()
+    {
+        $this->logInAs('admin');
+        $client = $this->getClient();
+
+        $url = 'https://fashionunited.com/news/business/jigsaw-posts-8-percent-increase-in-annual-sales/2017070316404';
+
+        $crawler = $client->request('GET', '/new');
+
+        $this->assertSame(200, $client->getResponse()->getStatusCode());
+
+        $form = $crawler->filter('form[name=entry]')->form();
+
+        $data = [
+            'entry[url]' => $url,
+        ];
+
+        $client->submit($form, $data);
+
+        $crawler = $client->request('GET', '/new');
+
+        $this->assertSame(200, $client->getResponse()->getStatusCode());
+
+        $form = $crawler->filter('form[name=entry]')->form();
+
+        $data = [
+            'entry[url]' => $url,
+        ];
+
+        $client->submit($form, $data);
+
+        $this->assertSame(302, $client->getResponse()->getStatusCode());
+        $this->assertContains('/view/', $client->getResponse()->getTargetUrl());
+    }
+
     /**
      * This test will require an internet connection.
      */

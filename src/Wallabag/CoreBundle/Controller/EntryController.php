@@ -79,6 +79,7 @@ class EntryController extends Controller
                 return $this->redirect($this->generateUrl('view', ['id' => $existingEntry->getId()]));
             }
 
+            $entry->setGivenUrl($entry->getUrl());
             $this->updateEntry($entry);
 
             $em = $this->getDoctrine()->getManager();
