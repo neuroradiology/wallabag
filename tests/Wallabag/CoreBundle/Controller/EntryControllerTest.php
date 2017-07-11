@@ -271,7 +271,7 @@ class EntryControllerTest extends WallabagCoreTestCase
         $this->logInAs('admin');
         $client = $this->getClient();
 
-        $url = 'https://fashionunited.com/news/business/jigsaw-posts-8-percent-increase-in-annual-sales/2017070316404';
+        $url = 'http://bit.ly/2t8Fwre';
 
         $crawler = $client->request('GET', '/new');
 

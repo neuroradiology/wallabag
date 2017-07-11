@@ -71,6 +71,7 @@ class ContentProxy
         // Not sure what are the other possible cases where this property is empty
         if (empty($entry->getUrl()) && !empty($url)) {
             $entry->setUrl($url);
+            $entry->setGivenUrl($url);
         }
 
         $this->stockEntry($entry, $content);
