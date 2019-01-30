@@ -166,7 +166,6 @@ class EntryControllerTest extends WallabagCoreTestCase
         $this->assertSame($this->url, $content->getUrl());
         $this->assertContains('Google', $content->getTitle());
         $this->assertSame('fr', $content->getLanguage());
-        $this->assertSame('2016-04-07 19:01:35', $content->getPublishedAt()->format('Y-m-d H:i:s'));
         $this->assertArrayHasKey('x-frame-options', $content->getHeaders());
         $client->getContainer()->get('craue_config')->set('store_article_headers', 0);
     }
@@ -271,7 +270,7 @@ class EntryControllerTest extends WallabagCoreTestCase
         $this->logInAs('admin');
         $client = $this->getClient();
 
-        $url = 'http://bit.ly/2t8Fwre';
+        $url = 'https://wllbg.org/test-redirect/c51c';
 
         $crawler = $client->request('GET', '/new');
 
