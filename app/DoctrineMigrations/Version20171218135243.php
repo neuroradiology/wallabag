@@ -25,10 +25,10 @@ class Version20171218135243 extends WallabagMigration
                 $sql = 'CREATE UNIQUE INDEX ' . $this->indexGivenUrl . ' ON ' . $this->getTable('entry') . ' (url, given_url, user_id);';
                 break;
             case 'mysql':
-                $sql = 'CREATE INDEX ' . $this->indexGivenUrl . ' ON ' . $this->getTable('entry') . ' (url (255), given_url (255), user_id);';
+                $sql = 'CREATE UNIQUE INDEX ' . $this->indexGivenUrl . ' ON ' . $this->getTable('entry') . ' (url (255), given_url (255), user_id);';
                 break;
             case 'postgresql':
-                $sql = 'CREATE INDEX ' . $this->indexGivenUrl . ' ON ' . $this->getTable('entry') . ' (url, given_url, user_id);';
+                $sql = 'CREATE UNIQUE INDEX ' . $this->indexGivenUrl . ' ON ' . $this->getTable('entry') . ' (url, given_url, user_id);';
                 break;
         }
 

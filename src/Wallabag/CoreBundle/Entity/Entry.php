@@ -26,7 +26,8 @@ use Wallabag\UserBundle\Entity\User;
  *     indexes={
  *         @ORM\Index(name="created_at", columns={"created_at"}),
  *         @ORM\Index(name="uid", columns={"uid"})
- *     }
+ *     },
+ *     uniqueConstraints={@ORM\UniqueConstraint(name="IDX_entry_given_url",columns={"url", "given_url", "user_id"})}
  * )
  * @ORM\HasLifecycleCallbacks()
  * @Hateoas\Relation("self", href = "expr('/api/entries/' ~ object.getId())")
