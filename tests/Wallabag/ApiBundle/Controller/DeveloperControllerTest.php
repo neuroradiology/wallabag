@@ -30,7 +30,7 @@ class DeveloperControllerTest extends WallabagCoreTestCase
         $newNbClients = $em->getRepository('WallabagApiBundle:Client')->findAll();
         $this->assertGreaterThan(\count($nbClients), \count($newNbClients));
 
-        $this->assertGreaterThan(1, $alert = $crawler->filter('.settings ul li strong')->extract(['_text']));
+        $this->assertGreaterThan(1, $alert = $crawler->filter('.settings table strong')->extract(['_text']));
         $this->assertContains('My app', $alert[0]);
     }
 
@@ -135,7 +135,7 @@ class DeveloperControllerTest extends WallabagCoreTestCase
     {
         $client = $this->getClient();
         $em = $client->getContainer()->get('doctrine.orm.entity_manager');
-        $userManager = $client->getContainer()->get('fos_user.user_manager');
+        $userManager = $client->getContainer()->get('fos_user.user_manager.test');
         $user = $userManager->findUserBy(['username' => $username]);
         $apiClient = new Client($user);
         $apiClient->setName('My app');
