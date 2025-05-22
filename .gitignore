@@ -9,11 +9,13 @@
 !/var/sessions
 /var/sessions/*
 !var/sessions/.gitkeep
-!var/SymfonyRequirements.php
 /bin/*
 !/bin/console
-!/bin/symfony_requirements
-.php_cs.cache
+.php-cs-fixer.php
+.php-cs-fixer.cache
+.phpunit.result.cache
+phpunit.xml
+compose.override.yaml
 
 # Parameters
 /app/config/parameters.yml
@@ -27,12 +29,16 @@ web/uploads/
 !/web/bundles/.gitkeep
 /web/assets/images/*
 !web/assets/images/.gitkeep
-/web/wallassets/*.dev.js
+/web/build/*
 
 # Build
 /app/build
 /build
 /coverage
+
+# Development
+docker/php/env
+docker/php/blackfire
 
 # Composer PHAR
 /composer.phar
@@ -40,18 +46,19 @@ web/uploads/
 # Data for wallabag
 data/db/wallabag*.sqlite
 
-# Docker container logs and data
-docker/logs/
-docker/data/
-
 # assets stuff
 node_modules/
 bin
-app/Resources/build/
-!/src/Wallabag/CoreBundle/Resources/public
-/src/Wallabag/CoreBundle/Resources/public/*
+package-lock.json
 
 # Test-generated files
 admin-export.json
 specialexport.json
 /data/site-credentials-secret-key.txt
+
+# Custom CSS file
+web/custom.css
+
+.env.local
+
+yarn-error.log

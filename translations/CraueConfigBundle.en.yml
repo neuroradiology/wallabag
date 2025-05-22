@@ -1,0 +1,35 @@
+settings_changed: Configuration updated
+download_pictures: Download pictures onto your server
+diaspora_url: diaspora* URL, if the service is enabled
+export_epub: Enable ePub export
+export_pdf: Enable PDF export
+export_csv: Enable CSV export
+export_json: Enable JSON export
+export_txt: Enable TXT export
+export_xml: Enable XML export
+import_with_rabbitmq: Enable RabbitMQ to import data asynchronously
+import_with_redis: Enable Redis to import data asynchronously
+shaarli_url: Shaarli URL, if the service is enabled
+unmark_url: Unmark URL, if the service is enabled
+share_diaspora: Enable share to diaspora*
+share_mail: Enable share by e-mail
+share_shaarli: Enable sharing to Shaarli
+share_twitter: Enable sharing to Twitter
+share_unmark: Enable sharing to Unmark.it
+share_linkding: Enable sharing to Linkding
+show_printlink: Display a link to print content
+wallabag_support_url: Support URL for wallabag
+entry: article
+export: export
+import: import
+misc: misc
+modify_settings: apply
+matomo_host: Host of your website in Matomo (without http:// or https://)
+matomo_site_id: ID of your website in Matomo
+matomo_enabled: Enable Matomo
+share_public: Allow public URLs for entries
+download_images_enabled: Download images locally
+restricted_access: Enable authentication for paywalled websites
+api_user_registration: Turn on user registration via the API
+store_article_headers: Enable if wallabag stores HTTP headers for each article
+shaarli_share_origin_url: Enable sharing origin URL to Shaarli, if the service is enabled

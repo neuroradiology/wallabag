@@ -1,10 +1,11 @@
-wallabag_core:
-    version: 2.4.0-dev
-    paypal_url: "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9UBA65LG3FX9Y&lc=gb"
-    languages:
+parameters:
+    wallabag.version: 2.7.0-dev
+    wallabag.paypal_url: "https://liberapay.com/wallabag/donate"
+    wallabag.languages:
         en: 'English'
         fr: 'Français'
         de: 'Deutsch'
+        nl: 'Dutch'
         th: 'ไทย'
         tr: 'Türkçe'
         fa: 'فارسی'
@@ -16,26 +17,29 @@ wallabag_core:
         it: 'Italiano'
         pt: 'Português'
         ru: 'Русский'
-    items_on_page: 12
-    theme: material
-    language: '%locale%'
-    rss_limit: 50
-    reading_speed: 1
-    cache_lifetime: 10
-    action_mark_as_read: 1
-    list_mode: 0
-    fetching_error_message_title: 'No title found'
-    fetching_error_message: |
-        wallabag can't retrieve contents for this article. Please <a href="http://doc.wallabag.org/en/user/errors_during_fetching.html#how-can-i-help-to-fix-that">troubleshoot this issue</a>.
-    api_limit_mass_actions: 10
-    encryption_key_path: "%kernel.project_dir%/data/site-credentials-secret-key.txt"
-    default_internal_settings:
+        ja: '日本語'
+        zh: '简体中文'
+        uk: 'Українська'
+        hr: 'Hrvatski'
+        cs: 'Čeština'
+        el: 'Ελληνικά'
+        gl: 'Galego'
+    wallabag.items_on_page: 12
+    wallabag.language: '%locale%'
+    wallabag.feed_limit: 50
+    wallabag.reading_speed: 200
+    wallabag.cache_lifetime: 10
+    wallabag.action_mark_as_read: 1
+    wallabag.list_mode: 0
+    wallabag.display_thumbnails: 1
+    wallabag.fetching_error_message_title: 'No title found'
+    wallabag.fetching_error_message: |
+        wallabag can't retrieve contents for this article. Please <a href="https://doc.wallabag.org/en/user/errors_during_fetching.html#how-can-i-help-to-fix-that">troubleshoot this issue</a>.
+    wallabag.api_limit_mass_actions: 10
+    wallabag.site_credentials.encryption_key_path: "%kernel.project_dir%/data/site-credentials-secret-key.txt"
+    wallabag.default_internal_settings:
         -
             name: share_public
-            value: 1
-            section: entry
-        -
-            name: carrot
             value: 1
             section: entry
         -
@@ -44,7 +48,7 @@ wallabag_core:
             section: entry
         -
             name: diaspora_url
-            value: http://diasporapod.com
+            value: https://diasporapod.com
             section: entry
         -
             name: share_unmark
@@ -59,16 +63,16 @@ wallabag_core:
             value: 1
             section: entry
         -
-            name: share_scuttle
+            name: shaarli_url
+            value: https://myshaarli.com
+            section: entry
+        -
+            name: share_linkding
             value: 1
             section: entry
         -
-            name: shaarli_url
-            value: http://myshaarli.com
-            section: entry
-        -
-            name: scuttle_url
-            value: http://scuttle.org
+            name: linkding_url
+            value: https://linkding.example.com
             section: entry
         -
             name: share_mail
@@ -88,10 +92,6 @@ wallabag_core:
             section: entry
         -
             name: export_epub
-            value: 1
-            section: export
-        -
-            name: export_mobi
             value: 1
             section: export
         -
@@ -115,6 +115,10 @@ wallabag_core:
             value: 1
             section: export
         -
+            name: export_md
+            value: 1
+            section: export
+        -
             name: import_with_redis
             value: 0
             section: import
@@ -123,32 +127,24 @@ wallabag_core:
             value: 0
             section: import
         -
-            name: piwik_enabled
+            name: matomo_enabled
             value: 0
             section: analytics
         -
-            name: piwik_host
-            value: v2.wallabag.org
+            name: matomo_host
+            value: matomo.wallabag.org
             section: analytics
         -
-            name: piwik_site_id
+            name: matomo_site_id
             value: 1
             section: analytics
-        -
-            name: demo_mode_enabled
-            value: 0
-            section: misc
-        -
-            name: demo_mode_username
-            value: wallabag
-            section: misc
         -
             name: download_images_enabled
             value: 0
             section: misc
         -
             name: wallabag_support_url
-            value: https://www.wallabag.org/pages/support.html
+            value: https://github.com/wallabag/wallabag/issues/new/choose
             section: misc
         -
             name: api_user_registration
@@ -163,9 +159,27 @@ wallabag_core:
             value: 0
             section: entry
 
-wallabag_user:
-    registration_enabled: "%fosuser_registration%"
-
-wallabag_import:
-    allow_mimetypes: ['application/octet-stream', 'application/json', 'text/plain', 'text/csv']
-    resource_dir: "%kernel.project_dir%/web/uploads/import"
+    wallabag.default_ignore_origin_instance_rules:
+        -
+            rule: host = "feedproxy.google.com"
+        -
+            rule: host = "feeds.reuters.com"
+        -
+            rule: _all ~ "https?://www\.lemonde\.fr/tiny.*"
+    wallabag.fonts:
+        - 'Sans-serif'
+        - 'Serif'
+        - 'Atkinson Hyperlegible'
+        - 'EB Garamond'
+        - 'Lato'
+        - 'Montserrat'
+        - 'OpenDyslexicRegular'
+        - 'Oswald'
+    wallabag.allow_mimetypes:
+        - 'application/octet-stream'
+        - 'application/json'
+        - 'text/plain'
+        - 'text/csv'
+        - 'text/html'
+        - 'application/vnd.ms-excel'
+    wallabag.resource_dir: "%kernel.project_dir%/web/uploads/import"

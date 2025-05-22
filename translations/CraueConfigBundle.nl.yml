@@ -1,0 +1,35 @@
+shaarli_share_origin_url: Schakel het delen van oorspronkelijke url naar Shaarli in, wanneer deze dienst ingeschakeld is
+store_article_headers: Schakel het opslaan van HTTP headers voor ieder artikel in
+api_user_registration: Schakel gebruikersregistratie via API in
+restricted_access: Schakel authenticatie voor betaalde websites in
+download_images_enabled: Download afbeelding lokaal
+matomo_enabled: Schakel Matomo in
+matomo_site_id: ID van uw Matomo website
+matomo_host: Adres van uw Matomo website (zonder http:// of https://)
+modify_settings: bevestig
+misc: overig
+import: importeer
+export: exporteer
+entry: Artikel
+wallabag_support_url: Hulp URL voor wallabag
+show_printlink: Toon een link naar de print inhoud
+share_unmark: Schakel delen met Unmark.it in
+share_twitter: Schakel delen met Twitter in
+share_shaarli: Schakel delen met Shaarli in
+share_mail: Schakel delen naar e-mail in
+share_diaspora: Schakel deel naar diaspora* in
+unmark_url: Unmark URL, als de dienst ingeschakeld is
+scuttle_url: Scuttle URL, wanneer de dienst ingeschakeld is
+shaarli_url: Shaarli URL, als de service ingeschakeld is
+import_with_redis: Schakel Redis in om data asynchroon te importeren
+import_with_rabbitmq: Schakel RabbitMQ in om data asynchroon te importeren
+export_xml: Schakel XML-export in
+export_txt: Schakel TXT-export in
+export_json: Schakel JSON-export in
+export_csv: Schakel CSV-export in
+export_pdf: Schakel PDF-export in
+export_epub: Schakel ePub-export in
+download_pictures: Download foto's naar jouw server
+settings_changed: Instellingen bijgewerkt
+diaspora_url: diaspora* URL, als de dienst is aangezet
+share_public: Sta openbare URL's toe voor items

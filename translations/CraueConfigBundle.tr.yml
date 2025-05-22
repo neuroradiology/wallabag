@@ -1,0 +1,35 @@
+settings_changed: Ayarlar güncellendi
+download_pictures: Resimleri sunucuya indir
+diaspora_url: hizmet etkinse diaspora* URL'si
+export_epub: ePub dışa aktarımını etkinleştir
+export_pdf: PDF dışa aktarımını etkinleştir
+export_csv: CSV dışa aktarımını etkinleştir
+export_json: JSON dışa aktarımını etkinleştir
+export_txt: TXT dışa aktarımını etkinleştir
+export_xml: XML dışa aktarımını etkinleştir
+import_with_rabbitmq: Verileri eşzamansız olarak içe aktarmak için RabbitMQ'yu etkinleştir
+import_with_redis: Verileri eşzamansız olarak içe aktarmak için Redis'i etkinleştir
+shaarli_url: Hizmet etkinse Shaarli URL'si
+unmark_url: Hizmet etkinse Unmark URL'si
+share_diaspora: diaspora*'ya paylaşımı etkinleştir
+share_mail: E-posta ile paylaşımı etkinleştir
+share_shaarli: Shaarli'ye paylaşımı etkinleştir
+share_twitter: Twitter'a paylaşımı etkinleştir
+share_unmark: Unmark.it'e paylaşımı etkinleştir
+show_printlink: İçeriği yazdırabilmek için bir bağlantı görüntüle
+wallabag_support_url: Wallabag destek URL'i
+entry: makale
+export: dışarı aktar
+import: içe aktar
+misc: çeşitli
+modify_settings: uygula
+matomo_host: Matomo'teki web sitenizin host adresi (başında http:// veya https:// olmadan)
+matomo_site_id: Matomo'teki web sitenizin ID'si
+matomo_enabled: Matomo'yu etkinleştir
+share_public: Makaleler için herkese açık URL'lere izin ver
+download_images_enabled: Resimleri lokale indir
+restricted_access: Ödeme ile erişim sağlanabilen siteler için kimlik doğrulamayı etkinleştir
+api_user_registration: API aracılığıyla kullanıcı kaydını aç
+store_article_headers: Eğer wallabag her makale için HTTP üst bilgilerini saklıyorsa etkinleştirin
+shaarli_share_origin_url: Hizmet etkinse, orijinal URL'yi Shaarli'ye paylaşmayı etkinleştir
+share_linkding: Linkding ile paylaşımı etkinleştir

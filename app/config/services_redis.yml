@@ -1,0 +1,214 @@
+# Redis stuff
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    # readability
+    wallabag.queue.redis.readability:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.readability"
+
+    wallabag.producer.redis.readability:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.readability"
+
+    wallabag.consumer.redis.readability:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\ReadabilityImport'
+
+    # instapaper
+    wallabag.queue.redis.instapaper:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.instapaper"
+
+    wallabag.producer.redis.instapaper:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.instapaper"
+
+    wallabag.consumer.redis.instapaper:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\InstapaperImport'
+
+    # pinboard
+    wallabag.queue.redis.pinboard:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.pinboard"
+
+    wallabag.producer.redis.pinboard:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.pinboard"
+
+    wallabag.consumer.redis.pinboard:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\PinboardImport'
+
+    # delicious
+    wallabag.queue.redis.delicious:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.delicious"
+
+    wallabag.producer.redis.delicious:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.delicious"
+
+    wallabag.consumer.redis.delicious:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\DeliciousImport'
+
+    # Omnivore
+    wallabag.queue.redis.omnivore:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.omnivore"
+
+    wallabag.producer.redis.omnivore:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.omnivore"
+
+    wallabag.consumer.redis.omnivore:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\OmnivoreImport'
+
+    # pocket
+    wallabag.queue.redis.pocket:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.pocket"
+
+    wallabag.producer.redis.pocket:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.pocket"
+
+    wallabag.consumer.redis.pocket:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\PocketImport'
+
+    # wallabag v1
+    wallabag.queue.redis.wallabag_v1:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.wallabag_v1"
+
+    wallabag.producer.redis.wallabag_v1:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.wallabag_v1"
+
+    wallabag.consumer.redis.wallabag_v1:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\WallabagV1Import'
+
+    # wallabag v2
+    wallabag.queue.redis.wallabag_v2:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.wallabag_v2"
+
+    wallabag.producer.redis.wallabag_v2:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.wallabag_v2"
+
+    wallabag.consumer.redis.wallabag_v2:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\WallabagV2Import'
+
+    # elcurator
+    wallabag.queue.redis.elcurator:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.elcurator"
+
+    wallabag.producer.redis.elcurator:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.elcurator"
+
+    wallabag.consumer.redis.elcurator:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\ElcuratorImport'
+
+    # firefox
+    wallabag.queue.redis.firefox:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.firefox"
+
+    wallabag.producer.redis.firefox:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.firefox"
+
+    wallabag.consumer.redis.firefox:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\FirefoxImport'
+
+    # chrome
+    wallabag.queue.redis.chrome:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.chrome"
+
+    wallabag.producer.redis.chrome:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.chrome"
+
+    wallabag.consumer.redis.chrome:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\ChromeImport'
+
+    # shaarli
+    wallabag.queue.redis.shaarli:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.shaarli"
+
+    wallabag.producer.redis.shaarli:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.shaarli"
+
+    wallabag.consumer.redis.shaarli:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\ShaarliImport'
+
+    # pocket html
+    wallabag.queue.redis.pocket_html:
+        class: Simpleue\Queue\RedisQueue
+        arguments:
+            $queueName: "wallabag.import.pocket_html"
+
+    wallabag.producer.redis.pocket_html:
+        class: Wallabag\Redis\Producer
+        arguments:
+            - "@wallabag.queue.redis.pocket_html"
+
+    wallabag.consumer.redis.pocket_html:
+        class: Wallabag\Consumer\RedisEntryConsumer
+        arguments:
+            $import: '@Wallabag\Import\PocketHtmlImport'

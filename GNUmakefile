@@ -2,13 +2,29 @@ SHELL=bash
 TMP_FOLDER=/tmp
 RELEASE_FOLDER=wllbg-release
 
-ENV ?= prod
+# ensure the ENV variable is well defined
+AVAILABLE_ENV := prod dev test
+ifneq ($(filter $(ENV),$(AVAILABLE_ENV)),)
+	# all good
+else
+	# not good, force it to "prod"
+	override ENV = prod
+endif
+
+DOCKER_COMPOSE_RUNNING := $(shell docker compose ps -q | grep -q . && echo 1 || echo 0)
+
+ifeq ($(DOCKER_COMPOSE_RUNNING), 1)
+  PHP := docker compose run --rm php php
+  PHP_NO_XDEBUG := docker compose run -e XDEBUG_MODE=off --rm php php
+  YARN := docker compose run --rm php yarn
+else
+  PHP := php
+  PHP_NO_XDEBUG := XDEBUG_MODE=off php
+  YARN := yarn
+endif
 
 help: ## Display this help menu
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
-
-clean: ## Clear the application cache
-	rm -rf var/cache/*
 
 install: ## Install wallabag with the latest version
 	@./scripts/install.sh $(ENV)
@@ -16,28 +32,34 @@ install: ## Install wallabag with the latest version
 update: ## Update the wallabag installation to the latest version
 	@./scripts/update.sh $(ENV)
 
-dev: ## Install the latest dev version
+dev: ENV=dev
+dev: build ## Install the latest dev version
 	@./scripts/dev.sh
 
 run: ## Run the wallabag built-in server
-	@php bin/console server:run --env=dev
+	@$(PHP) bin/console server:run --env=dev
 
 build: ## Run webpack
-	@npm run build:$(ENV)
+	@$(YARN) install
+	@$(YARN) build:$(ENV)
 
-prepare: clean ## Prepare database for testsuite
-ifdef DB
-	cp app/config/tests/parameters_test.$(DB).yml app/config/parameters_test.yml
-endif
-	-php bin/console doctrine:database:drop --force --env=test
-	php bin/console doctrine:database:create --env=test
-	php bin/console doctrine:migrations:migrate --no-interaction --env=test
+test: ## Launch wallabag testsuite
+	@$(PHP_NO_XDEBUG) -dmemory_limit=-1 bin/phpunit -v
 
-fixtures: ## Load fixtures into database
-	php bin/console doctrine:fixtures:load --no-interaction --env=test
+fix-cs: ## Run PHP-CS-Fixer
+	@$(PHP_NO_XDEBUG) bin/php-cs-fixer fix
 
-test: prepare fixtures ## Launch wallabag testsuite
-	bin/simple-phpunit -v
+phpstan: ## Run PHPStan
+	@$(PHP_NO_XDEBUG) bin/phpstan analyse
+
+phpstan-baseline: ## Generate PHPStan baseline
+	@$(PHP_NO_XDEBUG) bin/phpstan analyse --generate-baseline
+
+lint-js: ## Run ESLint
+	@$(YARN) lint:js
+
+lint-scss: ## Run Stylelint
+	@$(YARN) lint:scss
 
 release: ## Create a package. Need a VERSION parameter (eg: `make release VERSION=master`).
 ifndef VERSION
@@ -48,6 +70,6 @@ endif
 deploy: ## Deploy wallabag
 	@bundle exec cap staging deploy
 
-.PHONY: help clean prepare install fixtures update build test release deploy run dev
+.PHONY: help install update build test release deploy run dev fix-cs phpstan
 
 .DEFAULT_GOAL := install

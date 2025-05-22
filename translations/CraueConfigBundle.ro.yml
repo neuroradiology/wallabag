@@ -1,0 +1,22 @@
+download_pictures: Descarcă poze pe server
+diaspora_url: diaspora* URL, dacă serviciul este permis
+export_epub: Permite exportare ePub
+export_pdf: Permite exportare PDF
+export_csv: Permite exportare CSV
+export_json: Permite exportare JSON
+export_txt: Permite exportare TXT
+export_xml: Permite exportare XML
+shaarli_url: Shaarli URL, dacă serviciul este permis
+unmark_url: Unmark URL, dacă serviciul este permis
+share_diaspora: Permite share către diaspora*
+share_mail: Permite share prin email
+share_shaarli: Permite share către Shaarli
+share_twitter: Permite share către Twitter
+share_unmark: Permite share către Unmark.it
+show_printlink: Afișează un link pentru a printa content-ul
+wallabag_support_url: URL-ul de suport pentru wallabag
+entry: "alticol"
+export: "exportă"
+import: "importă"
+misc: "diverse"
+modify_settings: "aplică"

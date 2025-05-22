@@ -1,0 +1,10 @@
+auth_code:
+    on: włączony
+    mailer:
+        subject: Kod uwierzytelniający wallabag
+        body:
+            hello: Cześć, %user%,
+            first_para: Ponieważ do zalogowania się na konto wallabag wymagane jest uwierzytelnianie dwuskładnikowe, a nowe urządzenie właśnie z niego korzystało, wyślemy Ci kod, aby zweryfikować jego połączenie.
+            second_para: 'Oto kod:'
+            support: 'Nie wahaj się skontaktować z nami, jeżeli masz jakiekolwiek problemy:'
+            signature: Zespół wallabag

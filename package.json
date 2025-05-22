@@ -1,13 +1,13 @@
 {
   "name": "wallabag",
-  "version": "2.3.3",
+  "version": "2.6.0",
   "description": "wallabag is a self hostable application for saving web pages",
   "private": true,
   "directories": {
     "doc": "docs"
   },
   "engines": {
-    "node": ">=6.10"
+    "node": ">=20"
   },
   "repository": {
     "type": "git",
@@ -17,17 +17,22 @@
     {
       "name": "Nicolas Lœuillet",
       "email": "nicolas@loeuillet.org",
-      "homepage": "http://www.cdetc.fr",
+      "homepage": "https://nicolas.loeuillet.org",
       "role": "Developer"
     },
     {
       "name": "Thomas Citharel",
-      "homepage": "http://tcit.fr",
+      "homepage": "https://tcit.fr",
       "role": "Developer"
     },
     {
       "name": "Jérémy Benoist",
-      "homepage": "http://www.j0k3r.net",
+      "homepage": "https://www.j0k3r.net",
+      "role": "Developer"
+    },
+    {
+      "name": "Kevin Decherf",
+      "homepage": "https://kdecherf.com/",
       "role": "Developer"
     }
   ],
@@ -36,51 +41,66 @@
     "url": "https://github.com/wallabag/wallabag/issues"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
-    "babel-core": "^6.24.1",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.0.0",
-    "babel-preset-env": "^1.4.0",
-    "css-loader": "^0.28.0",
-    "eslint": "^4.0.0",
-    "eslint-config-airbnb-base": "^11.1.3",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-import": "^2.2.0",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "file-loader": "^0.11.0",
+    "@babel/core": "^7.27.1",
+    "@babel/eslint-parser": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@symfony/webpack-encore": "^5.1.0",
+    "autoprefixer": "^10.4.21",
+    "babel-loader": "^10.0.0",
+    "core-js": "^3.42.0",
+    "css-loader": "^7.1.2",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-webpack-plugin": "^5.0.1",
+    "file-loader": "^6.2.0",
     "lato-font": "^3.0.0",
-    "node-sass": "^4.5.2",
-    "postcss-loader": "^2.0.5",
-    "sass-loader": "^6.0.3",
-    "style-loader": "^0.18.2",
-    "stylelint": "^7.9.0",
-    "stylelint-config-standard": "^16.0.0",
-    "stylelint-webpack-plugin": "^0.7.0",
-    "url-loader": "^0.5.8",
-    "webpack": "^2.3.2",
-    "webpack-dev-server": "^2.4.4",
-    "webpack-manifest-plugin": "^1.1.0",
-    "webpack-merge": "^4.1.0"
+    "mini-css-extract-plugin": "^2.9.2",
+    "postcss": "^8.5.3",
+    "postcss-loader": "^8.1.1",
+    "postcss-scss": "^4.0.9",
+    "regenerator-runtime": "^0.14.1",
+    "sass-embedded": "^1.89.0",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-scss": "^5.3.2",
+    "terser-webpack-plugin": "^5.3.14",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.99.8",
+    "webpack-cli": "^5.1.4",
+    "webpack-manifest-plugin": "^5.0.1",
+    "webpack-merge": "^6.0.1",
+    "webpack-notifier": "^1.15.0"
   },
   "dependencies": {
-    "annotator": "git://github.com/wallabag/annotator.git#0f076c7d371ed25eb0793346f46982d90f2c4c85",
-    "clipboard": "^2.0.4",
+    "@fontsource/atkinson-hyperlegible": "^5.2.5",
+    "@fontsource/eb-garamond": "^5.2.5",
+    "@fontsource/montserrat": "^5.2.5",
+    "@fontsource/oswald": "^5.2.5",
+    "@hotwired/stimulus": "^3.2.2",
+    "@materializecss/materialize": "^1.2.2",
+    "@symfony/stimulus-bridge": "^4.0.1",
+    "annotator": "wallabag/annotator#master",
+    "clipboard": "^2.0.11",
     "hammerjs": "^2.0.8",
-    "highlight.js": "^9.12.0",
+    "highlight.js": "^11.11.1",
     "icomoon-free-npm": "^0.0.0",
-    "jquery": "^2.1.4",
-    "jquery.cookie": "^1.4.1",
-    "jr-qrcode": "^1.0.7",
-    "material-design-icons-iconfont": "^3.0.3",
-    "materialize-css": "^0.98.1",
+    "jr-qrcode": "^1.2.1",
+    "material-design-icons-iconfont": "^6.7.0",
+    "mathjax": "^3.2.2",
     "mousetrap": "^1.6.0",
-    "ptsans-npm-webfont": "^0.0.4",
-    "roboto-fontface": "^0.7.0",
+    "open-dyslexic": "^1.0.3",
+    "roboto-fontface": "^0.10.0",
     "waypoints": "^4.0.1"
   },
   "scripts": {
-    "watch": "./node_modules/.bin/webpack-dev-server --env=dev",
-    "build:dev": "./node_modules/.bin/webpack --env=dev",
-    "build:prod": "./node_modules/.bin/webpack --env=prod"
+    "build:dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build:prod": "encore production --progress",
+    "lint:js": "eslint assets/*.js assets/controllers/*.js",
+    "lint:scss": "stylelint assets/scss/*.scss assets/scss/**/*.scss"
   }
 }

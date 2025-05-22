@@ -1,0 +1,42 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ 'security.login.page_title'|trans }}{% endblock %}
+
+{% block body_class %}login{% endblock %}
+
+{% block menu %}{% endblock %}
+{% block messages %}{% endblock %}
+
+{% block content %}
+<main class="valign-wrapper">
+    <div class="valign row">
+        <div class="card sw">
+            <div class="center"><img src="{{ asset('img/logo-wallabag.svg') }}" class="typo-logo" alt="wallabag logo" /></div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+        <div class="center">
+            <form action="{{ path('changeLocale', {'language': 'de'}) }}" method="post" class="inline-block">
+                <input type="hidden" name="token" value="{{ csrf_token('change-locale') }}"/>
+
+                <button type="submit" class="btn-link">Deutsch</button>
+            </form>
+            –
+            <form action="{{ path('changeLocale', {'language': 'en'}) }}" method="post" class="inline-block">
+                <input type="hidden" name="token" value="{{ csrf_token('change-locale') }}"/>
+
+                <button type="submit" class="btn-link">English</button>
+            </form>
+            –
+            <form action="{{ path('changeLocale', {'language': 'fr'}) }}" method="post" class="inline-block">
+                <input type="hidden" name="token" value="{{ csrf_token('change-locale') }}"/>
+
+                <button type="submit" class="btn-link">Français</button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
